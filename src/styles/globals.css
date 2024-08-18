@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button-next::after,
+.button-next::after {
+  display: none;
+}
+
+.button-next,
+.button-prev {
+  display: block !important;
+  z-index: 1;
+}

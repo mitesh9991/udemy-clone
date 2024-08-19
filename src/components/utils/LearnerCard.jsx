@@ -39,12 +39,34 @@ const LearnerCarousel = ({ learnerData }) => {
   };
 
   return (
-    <div className="relative w-full mt-12 mb-2">
+    <div className="relative w-full mt-12 mb-2 overflow-x-hidden">
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         spaceBetween={10}
         slidesPerView={6}
         onSwiper={handleSwiperInit}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+          1280: {
+            slidesPerView: 6,
+          },
+        }}
         onSlideChange={handleSlideChange}
         className="w-full"
       >

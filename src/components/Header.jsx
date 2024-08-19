@@ -5,14 +5,19 @@ import {
   RiHeartFill,
   RiMoonFill,
   RiShoppingCartLine,
+  RiMenuLine,
+  RiSearch2Line,
 } from "@remixicon/react";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Header() {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <header className=" z-10 bg-white top-0 text-black py-3 px-6 shadow-xl ">
-      <div className="mx-auto flex justify-between items-center">
-        {/* Logo and Search Section */}
+    <header className="relative z-10 bg-white text-black py-3 px-6 shadow-xl">
+      {/* Desktop Header */}
+      <div className="hidden md:flex md:justify-between md:items-center">
         <div className="flex items-center space-x-4 flex-grow pr-5">
           <Image src="/logo.svg" alt="Udemy logo" width={90} height={90} />
           <h3 className="text-lg px-4">Categories</h3>
@@ -41,8 +46,6 @@ export default function Header() {
             </svg>
           </form>
         </div>
-
-        {/* Navigation Section */}
         <nav className="flex items-center space-x-4">
           <ul className="flex items-center space-x-6">
             <li>
@@ -67,8 +70,6 @@ export default function Header() {
               <RiShoppingCartLine size={22} className="my-icon" />
             </li>
           </ul>
-
-          {/* Buttons Section */}
           <ul className="flex items-center space-x-2">
             <li>
               <button className="py-2 px-4 hover:bg-gray-200 border border-black font-bold">
@@ -88,6 +89,63 @@ export default function Header() {
           </ul>
         </nav>
       </div>
+
+      {/* Mobile Header */}
+      <div className="md:hidden flex justify-between items-center">
+        <button
+          className="p-2"
+          onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <RiMenuLine size={24} />
+        </button>
+        <Image src="/logo.svg" alt="Udemy logo" width={70} height={70} />
+        <div className="flex gap-4">
+          <RiSearch2Line size={24} className="text-black" />
+          <RiShoppingCartLine size={24} className="text-black" />
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-white shadow-lg z-20">
+          <ul className="flex flex-col items-center space-y-4 py-4">
+            <li>
+              <Link
+                href="/"
+                className="text-xl text-gray-800 hover:text-gray-600"
+              >
+                Plans & Pricing
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/skill"
+                className="text-xl text-gray-800 hover:text-gray-600"
+              >
+                Udemy Business
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/qualification"
+                className="text-xl text-gray-800 hover:text-gray-600"
+              >
+                Teach On Udemy
+              </Link>
+            </li>
+            <li>
+              <button className="py-2 px-4 hover:bg-gray-200 border border-black font-bold">
+                Log in
+              </button>
+            </li>
+            <li>
+              <button className="py-2 px-4 bg-zinc-800 text-white border border-black font-bold">
+                Sign up
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

@@ -8,7 +8,9 @@
 }
 
 .button-next,
-.button-prev {
+.button-prev,
+.carousel-button-next,
+.carousel-button-prev {
   display: block !important;
   z-index: 1;
 }

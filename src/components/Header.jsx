@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="sticky z-10 bg-white top-0 text-black py-3 px-6 shadow-xl ">
+    <header className=" z-10 bg-white top-0 text-black py-3 px-6 shadow-xl ">
       <div className="mx-auto flex justify-between items-center">
         {/* Logo and Search Section */}
         <div className="flex items-center space-x-4 flex-grow pr-5">
